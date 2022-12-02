@@ -99,6 +99,7 @@ def tool_2():
     plt.xlabel("$S_0$")
     plt.ylabel("Value")
     plt.legend()
+    plt.show()
 
 # Tool 3
 def tool_3():
@@ -163,6 +164,7 @@ def tool_3():
   final_df.plot.scatter(x='Volatility',y='Returns') # Visualize the efficient frontier
   plt.xlabel("Risk")
   plt.ylabel("Expected Returns")
+  plt.show()
 
   min_vol = final_df.iloc[final_df['Volatility'].idxmin()] # Determine portfolio with the lowest volatility and output
   print("Minimum Volatility Portfolio:")
