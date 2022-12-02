@@ -170,7 +170,7 @@ def tool_3():
   print("Minimum Volatility Portfolio:")
   print(min_vol)
 
-  rf = input("Please input risk tolerance") # Determine optimal risky portfolio given risk tolerance value and output
+  rf = input("Please input risk tolerance: ") # Determine optimal risky portfolio given risk tolerance value and output
   rf = float(rf)
   optimal_p = final_df.iloc[((final_df['Returns']-rf)/final_df['Volatility']).idxmax()]
   print("Optimal Risky Portfolio:")
