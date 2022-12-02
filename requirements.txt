@@ -1,0 +1,19 @@
+
+# this is the "requirements.txt" file...
+
+python-dotenv
+
+pandas
+
+requests
+
+plotly
+#kaleido
+
+#sendgrid==6.6.0
+
+matplotlib
+
+numpy
+
+pytest
