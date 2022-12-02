@@ -17,3 +17,5 @@ matplotlib
 numpy
 
 pytest
+
+scipy.stats

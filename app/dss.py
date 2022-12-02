@@ -19,9 +19,6 @@ Original file is located at
 
 # Tool 1
 def tool_1():
-  from getpass import getpass
-  API_KEY = getpass("Please input your AlphaVantage API KEY: ")
-
   import pandas as pd
   # Import the CSV Data from AlphaVantage
   symbol = input("Please input the ticker symbol for your stock: ") # Request input values for stock symbol
@@ -45,8 +42,6 @@ def tool_2():
   K = input("Please enter the strike price of your option: ")
   K = int(K)
 
-  from getpass import getpass
-  API_KEY = getpass("Please input your AlphaVantage API KEY: ")
   option_data = pd.read_csv(f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={option}&apikey={API_KEY}&datatype=csv')
   df = pd.DataFrame(option_data) # Read stock values from API
   S = df["adjusted_close"][0] # Obtain current asset price
@@ -107,9 +102,6 @@ def tool_2():
 
 # Tool 3
 def tool_3():
-  from getpass import getpass
-  API_KEY = getpass("Please input your AlphaVantage API KEY: ")
-
   import pandas as pd # Import packages for math/data visualization
   import numpy as np
   import matplotlib.pyplot as plt
