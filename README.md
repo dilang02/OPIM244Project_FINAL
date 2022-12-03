@@ -36,7 +36,7 @@ ALPHAVANTAGE_API_KEY="_________"
 Run an example script:
 
 ```sh
-python app/alpha.py
+python -m app.alpha
 ```
 
 Run the decision supprt system:
