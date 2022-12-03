@@ -42,7 +42,7 @@ python -m app.alpha
 Run the decision supprt system:
 
 ```sh
-#python app/unemployment.py
+#python app/dss.py
 
 python -m app.dss
 ```
