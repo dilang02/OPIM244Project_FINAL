@@ -51,8 +51,8 @@ To visualize the stock price over the past 100 days, please enter the ticker sym
 
 ### Tool 2: Option Pricing Tool
 To determine the values of call/put options at a strike price, please enter the ticker symbol for your desired stock and the strike price of your asset.
-* If you wish to view the Greeks (financial parameters) for this option, please type "Y" when requested.
-* If you wish to view the call-put parity graph for this option, please type "Y" when requested.
+* If you wish to view the Greeks (financial parameters) for this option, please type "Y" when requested. Otherwise, type "N"
+* If you wish to view the call-put parity graph for this option, please type "Y" when requested. Otherwise, type "N"
 
 ### Tool 3: Portfolio Optimization Tool
 To view the efficient frontier minimum volatility portfolio for a given set of assets, please enter the ticker symbol of each stock in your prospective portfolio. When finished, please type "DONE" when requested.

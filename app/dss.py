@@ -67,6 +67,10 @@ def tool_2():
       print("To hedge against this option's risk, please take a short position on","{:.0%}".format(OptionDelta),"of your total shares")
     else:
       print(print("To hedge against this option's risk, please take a long position on","{:.0%}".format(OptionDelta),"of your total shares"))
+  elif greeks_choice == "N": # Data validity check
+    print("Greeks not selected.")
+  else:
+    print("Invalid data input - please restart code.")
 
   sensitivity_choice = input("View call-put parity graph?") # Ask user to display visualization of option pricing
   if sensitivity_choice == "Y":
@@ -83,6 +87,10 @@ def tool_2():
     plt.ylabel("Value")
     plt.legend()
     plt.show()
+  elif sensitivity_choice == "N": # Data validity check
+    print("Call-Put Parity graph not selected.")
+  else:
+    print("Invalid data input - please restart code.")
 
 # Tool 3
 def tool_3():
@@ -99,10 +107,13 @@ def tool_3():
 
   while True: # Allow for multiple stock inputs with while loop, exit loop once all stocks have been inputted
     symbol_input = input("Please input the ticker symbol for your stock: ")
+    symbol_input = symbol_input.upper()
     if symbol_input == "DONE":
       break
+    elif len(symbol_input) > 5:
+      print("Invalid ticker symbol - please restart code")
+      exit()
     else:
-      symbol_input = symbol_input.upper()
       symbol_list.append(symbol_input)
   for x in range(len(symbol_list)): # Create dataframe of portfolio & returns using correct stocks
     stock_data = pd.read_csv(f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol_list[x]}&apikey={API_KEY}&datatype=csv')
@@ -117,6 +128,7 @@ def tool_3():
   print(returns_p)
 
   cov_matrix = returns_p.cov()*252 # Calculate and display the covariance matrix
+  print("COVARIANCE MATRIX:")
   cov_matrix
 
   p_returns = [] # Create more variables for efficient frontier determination
@@ -152,12 +164,13 @@ def tool_3():
   min_vol = final_df.iloc[final_df['Volatility'].idxmin()] # Determine portfolio with the lowest volatility and output
   print("Minimum Volatility Portfolio:")
   print(min_vol)
-
+  
   rf = input("Please input risk tolerance: ") # Determine optimal risky portfolio given risk tolerance value and output
   rf = float(rf)
   optimal_p = final_df.iloc[((final_df['Returns']-rf)/final_df['Volatility']).idxmax()]
   print("Optimal Risky Portfolio:")
   print(optimal_p)
+      
 
 # Decision Support System:
 import os
