@@ -160,10 +160,12 @@ def tool_3():
   print(optimal_p)
 
 # Decision Support System:
+import os
 print("Hello!")
 print("1 - Stock Price Data Visualization")
 print("2 - Option Pricing/Delta Hedging Tool")
 print("3 - Portfolio Optimization")
+API_KEY = os.getenv("API_KEY")
 tool_number = input("Please select which tool you would like to use (1-3): ")
 if tool_number == "1": # Call requested functionality based on user input
   tool_1()
