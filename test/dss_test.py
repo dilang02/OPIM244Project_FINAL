@@ -6,4 +6,6 @@ def test_fetch_data():
     API_KEY = os.getenv("API_KEY")
     symbol="C"
     data = pd.read_csv(f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&datatype=csv')
-    assert isinstance(data, list)
+    df = pd.DataFrame(data)
+    parsed_data = df.values.tolist()
+    assert isinstance(parsed_data, list)
