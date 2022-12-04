@@ -94,6 +94,9 @@ def tool_2():
 
 # Tool 3
 def tool_3():
+  from getpass import getpass
+  API_KEY = getpass("Please input your AlphaVantage API KEY: ")
+
   import pandas as pd # Import packages for math/data visualization
   import numpy as np
   import matplotlib.pyplot as plt
@@ -107,13 +110,10 @@ def tool_3():
 
   while True: # Allow for multiple stock inputs with while loop, exit loop once all stocks have been inputted
     symbol_input = input("Please input the ticker symbol for your stock: ")
-    symbol_input = symbol_input.upper()
     if symbol_input == "DONE":
       break
-    elif len(symbol_input) > 5:
-      print("Invalid ticker symbol - please restart code")
-      exit()
     else:
+      symbol_input = symbol_input.upper()
       symbol_list.append(symbol_input)
   for x in range(len(symbol_list)): # Create dataframe of portfolio & returns using correct stocks
     stock_data = pd.read_csv(f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol_list[x]}&apikey={API_KEY}&datatype=csv')
@@ -159,13 +159,12 @@ def tool_3():
   final_df.plot.scatter(x='Volatility',y='Returns') # Visualize the efficient frontier
   plt.xlabel("Risk")
   plt.ylabel("Expected Returns")
-  plt.show()
 
   min_vol = final_df.iloc[final_df['Volatility'].idxmin()] # Determine portfolio with the lowest volatility and output
   print("Minimum Volatility Portfolio:")
   print(min_vol)
-  
-  rf = input("Please input risk tolerance: ") # Determine optimal risky portfolio given risk tolerance value and output
+
+  rf = input("Please input risk tolerance") # Determine optimal risky portfolio given risk tolerance value and output
   rf = float(rf)
   optimal_p = final_df.iloc[((final_df['Returns']-rf)/final_df['Volatility']).idxmax()]
   print("Optimal Risky Portfolio:")
