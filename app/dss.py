@@ -70,11 +70,13 @@ def tool_2():
   greeks_choice = input("View greeks?") # Ask user to display Greek option parameters
   if greeks_choice == "Y":
     print("GREEKS:")
-    OptionDelta = norm.cdf(np.log(S/K) + (r + sigma**2/2)*T / (sigma*np.sqrt(T))) # Calculate Greeks
-    OptionGamma = norm.pdf(np.log(S/K) + (r + sigma**2/2)*T / (sigma*np.sqrt(T))) / (S * sigma * np.sqrt(T))
-    OptionVega = norm.pdf(np.log(S/K) + (r + sigma**2/2)*T / (sigma*np.sqrt(T))) * S * np.sqrt(T)
-    OptionTheta = (-S * norm.pdf(np.log(S/K) + (r + sigma**2/2)*T / (sigma*np.sqrt(T))) * sigma)/(2*np.sqrt(T)) - (r * K * np.exp(-r*T)*norm.cdf(np.log(S/K) + (r + sigma**2/2)*T / (sigma*np.sqrt(T))-(sigma*np.sqrt(T))))
-    OptionRho = K * T * np.exp(-r*T)*norm.cdf(np.log(S/K) + (r + sigma**2/2)*T / (sigma*np.sqrt(T))-(sigma*np.sqrt(T)))
+    d_1 = (np.log(S/K) + (r + sigma**2/2)*T) / (sigma*np.sqrt(T))
+    d_2 = d_1 - sigma * np.sqrt(T)
+    OptionDelta = norm.cdf(d_1) # Calculate Greeks
+    OptionGamma = norm.pdf(d_1)/(S*sigma*np.sqrt(T))
+    OptionVega = S*np.sqrt(T)*norm.pdf(d_1)
+    OptionTheta = -S*norm.pdf(d_1)*sigma/(2*np.sqrt(T)) - (r*K*np.exp(-r*T)*norm.cdf(d_2))
+    OptionRho = K*T*np.exp(-r*T)*norm.cdf(d_2)
     print("Delta = ","{:.3f}".format(OptionDelta)) # Format output values
     print("Gamma = ","{:.3f}".format(OptionGamma))
     print("Vega = ","{:.3f}".format(OptionVega))
