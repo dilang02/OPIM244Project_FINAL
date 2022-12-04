@@ -20,14 +20,7 @@ pip install -r requirements.txt
 ## Configuration
 
 
-[Obtain an API Key](https://www.alphavantage.co/support/#api-key) from AlphaVantage. For the stocks report to work, you'll need a "premium" key.
-
-Then create a local ".env" file and provide the key like this:
-
-```sh
-# this is the ".env" file...
-
-ALPHAVANTAGE_API_KEY="_________"
+The local .env file containing the confidential API_KEY has already been implemented, so there is no need for further configuration.
 ```
 
 
