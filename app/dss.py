@@ -94,9 +94,6 @@ def tool_2():
 
 # Tool 3
 def tool_3():
-  from getpass import getpass
-  API_KEY = getpass("Please input your AlphaVantage API KEY: ")
-
   import pandas as pd # Import packages for math/data visualization
   import numpy as np
   import matplotlib.pyplot as plt
@@ -110,10 +107,10 @@ def tool_3():
 
   while True: # Allow for multiple stock inputs with while loop, exit loop once all stocks have been inputted
     symbol_input = input("Please input the ticker symbol for your stock: ")
+    symbol_input = symbol_input.upper()
     if symbol_input == "DONE":
       break
     else:
-      symbol_input = symbol_input.upper()
       symbol_list.append(symbol_input)
   for x in range(len(symbol_list)): # Create dataframe of portfolio & returns using correct stocks
     stock_data = pd.read_csv(f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol_list[x]}&apikey={API_KEY}&datatype=csv')
