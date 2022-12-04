@@ -125,8 +125,7 @@ def tool_3():
   print(returns_p)
 
   cov_matrix = returns_p.cov()*252 # Calculate and display the covariance matrix
-  print("COVARIANCE MATRIX:")
-  cov_matrix
+  
 
   p_returns = [] # Create more variables for efficient frontier determination
   p_volatility = []
@@ -151,11 +150,13 @@ def tool_3():
     data[b+' weight'] = [w[a] for w in p_weights]
   final_df = pd.DataFrame(data)
   print(final_df.head()) # Display dataframe and covariance matrix
+  print("COVARIANCE MATRIX:")
   print(cov_matrix)
 
   final_df.plot.scatter(x='Volatility',y='Returns') # Visualize the efficient frontier
   plt.xlabel("Risk")
   plt.ylabel("Expected Returns")
+  plt.show()
 
   min_vol = final_df.iloc[final_df['Volatility'].idxmin()] # Determine portfolio with the lowest volatility and output
   print("Minimum Volatility Portfolio:")
