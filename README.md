@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## Configuration
 
-
+```
 The local .env file containing the confidential API_KEY has already been implemented, so there is no need for further configuration.
 ```
 
