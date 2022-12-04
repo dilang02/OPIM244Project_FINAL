@@ -18,10 +18,9 @@ pip install -r requirements.txt
 ```
 
 ## Configuration
-
-```
+Navigate to where the repo has been saved using "cd" function in command-line system.
 The local .env file containing the confidential API_KEY has already been implemented, so there is no need for further configuration.
-```
+
 
 
 ## Usage
